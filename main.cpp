@@ -41,8 +41,9 @@ int main() {
   ARGui gui(renderer, window);
 
 
+  SDL_Rect rect = {150, 150, 450, 450}; 
 
-
+      //this will not work :v  /* SDL_Rect outline = { rect.x+1, rect.y+1, rect.w +1, rect.h + 1 }; */
   /* if(event.type == window) */
 
   while(running) {
@@ -55,7 +56,9 @@ int main() {
   
     SDL_SetRenderDrawColor(renderer, 40, 40, 40 , 255); // dark color
     SDL_RenderClear(renderer);
-
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderFillRect(renderer, &rect);
+    // Render_Fill_Rect = inside color, Render_Draw_Rect = border hehe
     SDL_RenderPresent(renderer);
     SDL_Delay(16);
   }
