@@ -1,0 +1,107 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "main.cpp"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main.cpp",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/gui.h"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/gui.h",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/gui.cpp"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/gui.cpp",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/components/button.h"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/components/button.h",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/components/button.cpp"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/components/button.cpp",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/utils/textRenderer.cpp"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/utils/textRenderer.cpp",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "main",
+      "gui/utils/textRenderer.h"
+    ],
+    "directory": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui",
+    "file": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/gui/utils/textRenderer.h",
+    "output": "/home/armaan025/Desktop/ARMAAN/Coding/projects/argui/main"
+  }
+]
