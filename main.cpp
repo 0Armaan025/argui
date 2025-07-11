@@ -6,6 +6,7 @@
 #include <vector> // from stl
 #include "gui/gui.h"
 #include "gui/utils/textRenderer.h"
+#include "setup.h"
 #include "./gui/components/button.h"
 using namespace std;
 
@@ -23,32 +24,11 @@ int main() {
   constexpr int WINDOW_WIDTH=640, WINDOW_HEIGHT=480;
 
   cout<<"Initalizing SDL2..."<<endl;
-
-  if((SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) <0)) {
-    cout<<"init failed, error: "<<SDL_GetError()<<endl;
-    return -1;
-  }
-
-
   SDL_Window* window = SDL_CreateWindow("SDL TEST WINDOW", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-
-  if(!window) {
-    cerr<<"Window creation failed: "<<SDL_GetError()<<endl;
-    SDL_Quit();
-    return -1;
-  }
-
   SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
   
-
-
-  if(!renderer) {
-    cerr<<"Renderer creation failed: "<<SDL_GetError()<<endl;
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return -1;
-  }
+  Setup setup(window, renderer, WINDOW_HEIGHT, WINDOW_WIDTH);
 
   // waiting when we close the window, event loop:w
 
@@ -68,7 +48,7 @@ int main() {
   Alignment textAlign = Alignment::Center;
   Button btn(100,100,200,50, "Click me!", textAlign);
   int r = 255, g = 255, b = 255;
-  SDL_Color textColor = SDL_Color{static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b)}; 
+  /* SDL_Color textColor = SDL_Color{static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b)};  */
 
 /* vector<Slider> sliders = { */
 /*     {{100, 400, 300, 10}, {100 + r, 395, 10, 20}, &r, {255, 0, 0}}, */
@@ -77,7 +57,7 @@ int main() {
 /* }; */
       //this will not work :v  /* SDL_Rect outline = { rect.x+1, rect.y+1, rect.w +1, rect.h + 1 }; */
   /* if(event.type == window) */
- bool dragging = false;
+ /* bool dragging = false; */
     /* int selectedSlider = -1; */
   while(running) {
     while(SDL_PollEvent(&event)) {

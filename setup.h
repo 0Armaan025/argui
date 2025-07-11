@@ -1,18 +1,18 @@
-#pragma once
-
+#pragma
 #include <iostream>
 #include <SDL2/SDL.h>
-#include <string>
+#include <SDL2/SDL_ttf.h>
 using namespace std;
 
 class Setup {
-  // this class will set up window and renderer
-  //
   private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    int w,h ;
   public:
-    Setup(SDL_Window& win, SDL_Renderer& ren);
-    bool isError = false;
-    string errorMessage = ""; 
+    Setup(SDL_Window* window, SDL_Renderer* renderer, int WINDOW_HEIGHT, int WINDOW_WIDTH);
+
+    void cleanSDL(SDL_Window* window, SDL_Renderer* renderer);
+
+    /* void runEventLoop(SDL_Window* window, SDL_Renderer* renderer); */
 };
