@@ -16,5 +16,6 @@ void ARGui::drawButton(Button& button) {
  TextRenderer text(renderer);
   text.initializeFont("Roboto-Regular.ttf", 32);
   SDL_Color textColor = {255,255,255,255};
-  text.drawText("Hi, im good",textColor);
+  
+  text.drawText("Hi, im good",textColor, button.xPos, button.yPos, button.rect, button.textAlign);
 }

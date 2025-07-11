@@ -6,6 +6,12 @@
 #include <SDL2/SDL_ttf.h>
 using namespace std;
 
+enum class Alignment {
+  Left,
+  Center,
+  Right
+};
+
 class TextRenderer {
   private:
     SDL_Renderer* renderer;
@@ -15,5 +21,5 @@ class TextRenderer {
     int xPos = 0, yPos = 0;
     TextRenderer(SDL_Renderer* ren);
     void initializeFont(const string& path, int size);
-    void drawText(const string& text, SDL_Color& color);
+    void drawText(const string& text, SDL_Color& color, int x, int y, SDL_Rect box, Alignment align = Alignment::Center);
 };

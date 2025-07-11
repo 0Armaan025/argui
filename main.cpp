@@ -64,7 +64,9 @@ int main() {
 
   ARGui gui(renderer, window);
   /* gui.drawButton(); */
-  Button btn(100,100,200,50, "Click me!");
+
+  Alignment textAlign = Alignment::Center;
+  Button btn(100,100,200,50, "Click me!", textAlign);
   int r = 255, g = 255, b = 255;
   SDL_Color textColor = SDL_Color{static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b)}; 
 

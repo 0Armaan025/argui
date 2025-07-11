@@ -4,10 +4,10 @@
 #include <SDL2/SDL.h>
 using namespace std;
 
-Button::Button(int x, int y, int w, int h, const std::string& text) : width{w}, height{h}, xPos{x}, yPos{y}, label{text}, bgColor{80,80,80,255}, rect{x,y,w,h}{
+Button::Button(int x, int y, int w, int h, const std::string& text, Alignment align) : width{w}, height{h}, xPos{x}, yPos{y}, label{text}, bgColor{80,80,80,255}, rect{x,y,w,h}{
   // the rect is just initalized, but shown in the draw function in the gui.cpp
          cout<<"Button constructor initalized";
- 
+      textAlign = align; 
 
        } 
 

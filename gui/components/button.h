@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include "../utils/textRenderer.h"
 using namespace std;
+
 #include <SDL2/SDL.h>
 
 class Button {
@@ -11,9 +13,10 @@ class Button {
     SDL_Rect rect;
     std::string label;
     bool isHovered = false;
+    Alignment textAlign = Alignment::Center;
     SDL_Color bgColor;
 
-    Button(int x, int y, int w, int h, const std::string& text);
+    Button(int x, int y, int w, int h, const std::string& text, Alignment align = Alignment::Center);
 
     SDL_Renderer* getRenderer() {
       return renderer;
