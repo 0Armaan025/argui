@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include "./components/button.h"
 #pragma once
 
 
@@ -10,6 +11,6 @@ class ARGui {
   public:
     ARGui(SDL_Renderer* ren, SDL_Window* win);
 
-    void drawButton( );
+    void drawButton(Button& button);
 
 };

@@ -6,14 +6,15 @@
 #include <vector> // from stl
 #include "gui/gui.h"
 #include "gui/utils/textRenderer.h"
+#include "./gui/components/button.h"
 using namespace std;
 
-struct Slider {
-  SDL_Rect bar;
-  SDL_Rect knob;
-  int* value;
-  SDL_Color color;
-};
+/* struct Slider { */
+/*   SDL_Rect bar; */
+/*   SDL_Rect knob; */
+/*   int* value; */
+/*   SDL_Color color; */
+/* }; */
 
 
 
@@ -51,84 +52,86 @@ int main() {
 
   // waiting when we close the window, event loop:w
 
-  TextRenderer text(renderer);
-  text.initializeFont("Roboto-Regular.ttf", 32);
+  /* TextRenderer text(renderer); */
+  /* text.initializeFont("Roboto-Regular.ttf", 32); */
 
-  text.xPos = 100;
-  text.yPos =100;
+  /* text.xPos = 100; */
+  /* text.yPos =100; */
 
 
   bool running = true;
   SDL_Event event;
 
   ARGui gui(renderer, window);
-  gui.drawButton();
+  /* gui.drawButton(); */
+  Button btn(100,100,200,50, "Click me!");
   int r = 255, g = 255, b = 255;
   SDL_Color textColor = SDL_Color{static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b)}; 
 
-vector<Slider> sliders = {
-    {{100, 400, 300, 10}, {100 + r, 395, 10, 20}, &r, {255, 0, 0}},
-    {{100, 430, 300, 10}, {100 + g, 425, 10, 20}, &g, {0, 255, 0}},
-    {{100, 460, 300, 10}, {100 + b, 455, 10, 20}, &b, {0, 0, 255}},
-};
+/* vector<Slider> sliders = { */
+/*     {{100, 400, 300, 10}, {100 + r, 395, 10, 20}, &r, {255, 0, 0}}, */
+/*     {{100, 430, 300, 10}, {100 + g, 425, 10, 20}, &g, {0, 255, 0}}, */
+/*     {{100, 460, 300, 10}, {100 + b, 455, 10, 20}, &b, {0, 0, 255}}, */
+/* }; */
       //this will not work :v  /* SDL_Rect outline = { rect.x+1, rect.y+1, rect.w +1, rect.h + 1 }; */
   /* if(event.type == window) */
  bool dragging = false;
-    int selectedSlider = -1;
+    /* int selectedSlider = -1; */
   while(running) {
     while(SDL_PollEvent(&event)) {
       if(event.type == SDL_QUIT) {
         running = false;
       }
 
-      if(event.type == SDL_MOUSEBUTTONDOWN) {
-        int mx = event.button.x;
-        int my = event.button.y;
-
-        SDL_Point point = {mx, my};
-
-        for(size_t i =0;i<sliders.size();++i) {
-          if(SDL_PointInRect(&point, &sliders[i].knob)) {
-            dragging = true;
-            selectedSlider = i;
-            break;
-          }
-        }
-      }
-
-      if(event.type == SDL_MOUSEBUTTONUP) {
-        dragging = false;
-        selectedSlider = -1;
-      }
-
-      if(event.type == SDL_MOUSEMOTION && dragging) {
-        int mx = event.motion.x;
-
-        int baseX = sliders[selectedSlider].bar.x;
-        int newValue = clamp(mx-baseX,0,255);
-        *sliders[selectedSlider].value = newValue;
-        sliders[selectedSlider].knob.x = baseX + newValue;
-textColor = SDL_Color{
-            static_cast<Uint8>(r),
-            static_cast<Uint8>(g),
-            static_cast<Uint8>(b)
-        };
-      }
-    }
-
+/*       if(event.type == SDL_MOUSEBUTTONDOWN) { */
+/*         int mx = event.button.x; */
+/*         int my = event.button.y; */
+/**/
+/*         SDL_Point point = {mx, my}; */
+/**/
+/*         for(size_t i =0;i<sliders.size();++i) { */
+/*           if(SDL_PointInRect(&point, &sliders[i].knob)) { */
+/*             dragging = true; */
+/*             selectedSlider = i; */
+/*             break; */
+/*           } */
+/*         } */
+/*       } */
+/**/
+/*       if(event.type == SDL_MOUSEBUTTONUP) { */
+/*         dragging = false; */
+/*         selectedSlider = -1; */
+/*       } */
+/**/
+/*       if(event.type == SDL_MOUSEMOTION && dragging) { */
+/*         int mx = event.motion.x; */
+/**/
+/*         int baseX = sliders[selectedSlider].bar.x; */
+/*         int newValue = clamp(mx-baseX,0,255); */
+/*         *sliders[selectedSlider].value = newValue; */
+/*         sliders[selectedSlider].knob.x = baseX + newValue; */
+/* textColor = SDL_Color{ */
+/*             static_cast<Uint8>(r), */
+/*             static_cast<Uint8>(g), */
+/*             static_cast<Uint8>(b) */
+/*         }; */
+/*       } */
+/*     } */
+/**/
     
- 
+  } 
     SDL_SetRenderDrawColor(renderer, 40, 40, 40 , 255); // dark color
     SDL_RenderClear(renderer);
+    gui.drawButton(btn);
     // Render_Fill_Rect = inside color, Render_Draw_Rect = border hehe
-for (auto& s : sliders) {
-    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
-    SDL_RenderFillRect(renderer, &s.bar);
-
-    SDL_SetRenderDrawColor(renderer, s.color.r, s.color.g, s.color.b, 255);
-    SDL_RenderFillRect(renderer, &s.knob);
-}
-    text.drawText("KONISEGG JESKO ABSOLUT....", textColor);
+/* for (auto& s : sliders) { */
+/*     SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255); */
+/*     SDL_RenderFillRect(renderer, &s.bar); */
+/**/
+/*     SDL_SetRenderDrawColor(renderer, s.color.r, s.color.g, s.color.b, 255); */
+/*     SDL_RenderFillRect(renderer, &s.knob); */
+/* } */
+    /* text.drawText("KONISEGG JESKO ABSOLUT....", textColor); */
 
     SDL_RenderPresent(renderer);
     SDL_Delay(16);
