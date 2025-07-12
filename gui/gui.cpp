@@ -9,13 +9,6 @@ ARGui::ARGui(SDL_Renderer* ren, SDL_Window* win) : renderer(ren), window(win) {
   cout<<"constructor successfully initalized"<<endl;
 }
 
-void ARGui::drawButton(Button& button) {
-  cout<<"button has been drawn :)"<<endl;
-  SDL_SetRenderDrawColor(renderer, button.bgColor.r,button.bgColor.g, button.bgColor.b, button.bgColor.a);
-  SDL_RenderFillRect(renderer, &button.rect);
- TextRenderer text(renderer);
-  text.initializeFont("Roboto-Regular.ttf", 32);
-  SDL_Color textColor = {255,255,255,255};
-  
-  text.drawText("Hi, im good",textColor, button.xPos, button.yPos, button.rect, button.textAlign);
-}
+/* void ARGui::drawButton(Button& button) { */
+/**/
+/* } */

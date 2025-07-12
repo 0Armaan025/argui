@@ -7,6 +7,7 @@ SRC = main.cpp \
       gui/utils/textRenderer.cpp
 HDR = gui/gui.h \
 			setup.h \
+			gui/utils/Component.h \
       gui/components/button.h \
       gui/utils/textRenderer.h
 OBJ = $(SRC:.cpp=.o)

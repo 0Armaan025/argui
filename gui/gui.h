@@ -1,4 +1,6 @@
 #include <SDL2/SDL.h>
+#include "./utils/Component.h"
+#include <vector>
 #include "./components/button.h"
 #pragma once
 
@@ -9,8 +11,26 @@ class ARGui {
     SDL_Window* window;
 
   public:
+    std::vector<Component*> components;
+
+    void addComponent(Component* c) {
+      components.push_back(c);
+    }
+
+    void draw(SDL_Renderer* renderer) {
+      for(auto* c: components) {
+        c->draw(renderer);
+      }
+    }
+
+    void handle(SDL_Event& e) {
+      for(auto* c: components) {
+        c->handle(e);
+      }
+    }
+
     ARGui(SDL_Renderer* ren, SDL_Window* win);
 
-    void drawButton(Button& button);
+    /* void drawButton(Button& button); */
 
 };

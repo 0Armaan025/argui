@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
 #include "../utils/textRenderer.h"
+#include "../utils/Component.h"
 using namespace std;
 
 #include <SDL2/SDL.h>
 
-class Button {
+class Button: public Component {
   private:
     SDL_Renderer* renderer;
   public:
@@ -21,5 +22,7 @@ class Button {
     SDL_Renderer* getRenderer() {
       return renderer;
     }
-    void handleEvent(SDL_Event& e);
+
+    void draw(SDL_Renderer* renderer) override;
+    void handle(SDL_Event& e) override;
 };

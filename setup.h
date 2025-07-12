@@ -1,18 +1,20 @@
-#pragma
+#pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include "gui/gui.h"
 using namespace std;
 
 class Setup {
-  private:
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    int w,h ;
   public:
-    Setup(SDL_Window* window, SDL_Renderer* renderer, int WINDOW_HEIGHT, int WINDOW_WIDTH);
+    SDL_Window* window = nullptr;
+    SDL_Renderer* renderer = nullptr;
+    ARGui* gui = nullptr;
+    int w,h ;
 
-    void cleanSDL(SDL_Window* window, SDL_Renderer* renderer);
+    Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH);
 
-    /* void runEventLoop(SDL_Window* window, SDL_Renderer* renderer); */
+    void cleanSDL();
+
+    void runEventLoop();
 };

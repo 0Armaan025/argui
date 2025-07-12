@@ -7,11 +7,12 @@ using namespace std;
 
 
 
-Setup::Setup(SDL_Window* win, SDL_Renderer* ren, int WINDOW_HEIGHT, int WINDOW_WIDTH) : window{win}, renderer{ren}, w{WINDOW_WIDTH}, h{WINDOW_HEIGHT} {
+Setup::Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH) :w(WINDOW_WIDTH), h(WINDOW_HEIGHT) {
 
   const char* WINDOW_TITLE = "ARGUI - THE V1.0";
 
     
+  cout<<WINDOW_TITLE<<endl;
   cout<<"setup constructor called"<<endl;
   
   if(SDL_Init(SDL_INIT_VIDEO)<0) cerr<<"error";
@@ -30,24 +31,35 @@ Setup::Setup(SDL_Window* win, SDL_Renderer* ren, int WINDOW_HEIGHT, int WINDOW_W
     cerr<<"ERROR CREATING A RENDERER:"<<SDL_GetError()<<endl;
     /* return -1; */
   }
+
+  gui = new ARGui(renderer, window);
 }
 
-void Setup::cleanSDL(SDL_Window* window, SDL_Renderer* renderer) {
+void Setup::cleanSDL() {
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   TTF_Quit();
   SDL_Quit();
 }
 
-/* void Setup::runEventLoop(SDL_Window* window, SDL_Renderer* renderer) { */
-/*   bool running = true; */
-/*   SDL_Event event; */
-/**/
-/*   while(running) { */
-/*     while(SDL_PollEvent(&event)) { */
-/*       if(event.type == SDL_QUIT) { */
-/*         running = false; */
-/*       } */
-/*     } */
-/*   } */
-/* } */
+void Setup::runEventLoop() {
+  bool running = true;
+  SDL_Event event;
+
+  while(running) {
+    while(SDL_PollEvent(&event)) {
+      if(event.type == SDL_QUIT) {
+        running = false;
+      }
+      gui->handle(event);
+    }
+
+    SDL_SetRenderDrawColor(renderer, 30,30,30,255);
+    SDL_RenderClear(renderer);
+
+    gui->draw(renderer);
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(16);
+  }
+}
