@@ -6,6 +6,8 @@ using namespace std;
 
 #include <SDL2/SDL.h>
 
+
+
 class Button: public Component {
   private:
     SDL_Renderer* renderer;
@@ -14,10 +16,11 @@ class Button: public Component {
     SDL_Rect rect;
     std::string label;
     bool isHovered = false;
+    string font = "assets/Roboto-Regular.ttf";
     Alignment textAlign = Alignment::Center;
     SDL_Color bgColor;
 
-    Button(int x, int y, int w, int h, const std::string& text, Alignment align = Alignment::Center);
+    Button(int x, int y, int w, int h, const std::string& text, Alignment align = Alignment::Center, string myFont = "assets/Roboto-Regular.ttf");
 
     SDL_Renderer* getRenderer() {
       return renderer;
