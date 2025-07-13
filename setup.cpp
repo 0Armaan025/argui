@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-Setup::Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH) :w(WINDOW_WIDTH), h(WINDOW_HEIGHT) {
+Setup::Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH, SDL_Color color) :w(WINDOW_WIDTH), h(WINDOW_HEIGHT), WINDOW_COLOR(color)  {
 
   const char* WINDOW_TITLE = "ARGUI - THE V1.0";
 
@@ -54,7 +54,7 @@ void Setup::runEventLoop() {
       gui->handle(event);
     }
 
-    SDL_SetRenderDrawColor(renderer, 30,30,30,255);
+    SDL_SetRenderDrawColor(renderer, WINDOW_COLOR.r, WINDOW_COLOR.g, WINDOW_COLOR.b, WINDOW_COLOR.a);
     SDL_RenderClear(renderer);
 
     gui->draw(renderer);

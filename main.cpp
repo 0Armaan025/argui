@@ -26,7 +26,9 @@ int main() {
 
   cout<<"Initalizing SDL2..."<<endl;
   
-  Setup setup( WINDOW_HEIGHT, WINDOW_WIDTH);
+  SDL_Color MY_WINDOW_COLOR = {255,255,255,255};
+
+  Setup setup( WINDOW_HEIGHT, WINDOW_WIDTH, MY_WINDOW_COLOR);
 
   // waiting when we close the window, event loop:w
 
