@@ -1,6 +1,6 @@
 #include <iostream>
 #include "button.h"
-#include "../utils/textRenderer.h"
+#include "../../utils/text/textRenderer.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 using namespace std;
@@ -26,7 +26,7 @@ void Button::draw(SDL_Renderer* renderer) {
   SDL_SetRenderDrawColor(renderer, bgColor.r,bgColor.g, bgColor.b, bgColor.a);
   SDL_RenderFillRect(renderer, &rect);
  TextRenderer text(renderer);
-  text.initializeFont("Roboto-Regular.ttf", 32);
+  text.initializeFont("assets/Roboto-Regular.ttf", 32);
   SDL_Color textColor = {255,255,255,255};
   
   text.drawText("Hi, im good",textColor, xPos, yPos, rect, textAlign);

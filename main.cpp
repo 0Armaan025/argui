@@ -4,11 +4,11 @@
 #include <SDL2/SDL_ttf.h>
 #include <algorithm>
 #include <vector> // from stl
-#include "gui/gui.h"
-#include "gui/utils/textRenderer.h"
-#include "gui/utils/Component.h"
-#include "setup.h"
-#include "./gui/components/button.h"
+#include "./gui/utils/gui/gui.h"
+#include "./gui/utils/text/textRenderer.h"
+#include "./gui/utils/component/Component.h"
+#include "./utils/setup/setup.h"
+#include "./gui/components/button/button.h"
 using namespace std;
 
 /* struct Slider { */

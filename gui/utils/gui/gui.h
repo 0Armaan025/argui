@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
-#include "./utils/Component.h"
+#include "../component/Component.h"
 #include <vector>
-#include "./components/button.h"
+#include "../../components/button/button.h"
 #pragma once
 
 

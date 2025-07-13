@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "../utils/textRenderer.h"
-#include "../utils/Component.h"
+#include "../../utils/text/textRenderer.h"
+#include "../../utils/component/Component.h"
 using namespace std;
 
 #include <SDL2/SDL.h>
