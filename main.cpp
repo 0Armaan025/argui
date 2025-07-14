@@ -22,11 +22,11 @@ using namespace std;
 
 int main() {
 
-  constexpr int WINDOW_WIDTH=640, WINDOW_HEIGHT=480;
+  constexpr int WINDOW_WIDTH=890, WINDOW_HEIGHT=520;
 
   cout<<"Initalizing SDL2..."<<endl;
   
-  SDL_Color MY_WINDOW_COLOR = {255,255,255,255};
+  SDL_Color MY_WINDOW_COLOR = {41,41,41,255};
 
   Setup setup( WINDOW_HEIGHT, WINDOW_WIDTH, MY_WINDOW_COLOR);
 
@@ -43,9 +43,12 @@ int main() {
 
   Alignment textAlign = Alignment::Center;
   Button* btn = new Button(100,100,200,50, "Click me!", textAlign);
-  int r = 255, g = 255, b = 255;
+  std::vector<std::string> items = {"File", "Edit", "Help"};
+  Topbar* topBar = new Topbar(items, "ARGUI V1.0");
+  int r = 0, g = 0, b = 0;
     
   setup.gui->addComponent(btn);
+  setup.gui->addComponent(topBar);
   setup.runEventLoop();
   setup.cleanSDL();
 
