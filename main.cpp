@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector> // from stl
 #include "./gui/utils/gui/gui.h"
+#include "./gui/components/topbar/topbar.h"
 #include "./gui/utils/text/textRenderer.h"
 #include "./gui/utils/component/Component.h"
 #include "./utils/setup/setup.h"

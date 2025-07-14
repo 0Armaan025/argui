@@ -21,6 +21,7 @@ void Topbar::draw(SDL_Renderer* renderer) {
   SDL_RenderFillRect(renderer, &BAR_RECT);
   
   int xOffset = 10;
+  int OFFSET_THRASHOLD = 80;
   int yCenter = BAR_RECT.y + (BAR_RECT.h/2);
 TextRenderer text(renderer);
   text.initializeFont("assets/Roboto-Regular.ttf", 32);
@@ -33,17 +34,17 @@ TextRenderer text(renderer);
   int y = yCenter - (textH/2);
 
   SDL_Rect dummyBox = {xOffset, y, textW, textH};
-  text.drawText(item,textColor, xOffset, y, dummyBox, Alignment::Left);
-  xOffset = xOffset + textW + 20;
+  text.drawText(item,TEXT_COLOR, xOffset, y, dummyBox, Alignment::Left);
+  xOffset  += textW + OFFSET_THRASHOLD;
 
   }
 }
 
 void Topbar::handle(SDL_Event& event) {
-  if(event.type == SDL_MOUSEMOTION) {
-    int mx = event.motion.x; // returns x;
-    int my = event.motion.y; // and ofc this will return the y pos of the cursor;
-
-    isHovered = (mx >= xPos && mx <= xPos - width && my >= yPos && my<=yPos + height); // basically checking if xPos is greater or equal to xPos of button, and it is not at start too, same for vertical thing :D
-  }
+  /* if(event.type == SDL_MOUSEMOTION) { */
+  /*   int mx = event.motion.x; // returns x; */
+  /*   int my = event.motion.y; // and ofc this will return the y pos of the cursor; */
+  /**/
+  /*   isHovered = (mx >= xPos && mx <= xPos - width && my >= yPos && my<=yPos + height); // basically checking if xPos is greater or equal to xPos of button, and it is not at start too, same for vertical thing :D */
+  /* } */
 }
