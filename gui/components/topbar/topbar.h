@@ -17,7 +17,7 @@ class Topbar : public Component {
     SDL_Color TEXT_COLOR;
     std::string WINDOW_NAME = "ARGUI V1.0";
     
-    Topbar (std::vector<std::string> myItems, string windowName);
+    Topbar (std::vector<std::string> myItems, string windowName, SDL_Color bgColor, SDL_Color textColor);
 
     void draw(SDL_Renderer* renderer) override;
     void handle(SDL_Event& e) override;
