@@ -8,18 +8,21 @@
 using namespace std;
 
 TextRenderer::TextRenderer(SDL_Renderer* ren) : renderer(ren) {
-    cout << "constructor called" << endl;
-}
-
-void TextRenderer::initializeFont(const string& path, int size) {
     if (TTF_Init() < 0) {
         cerr << "TTF_Init error: " << TTF_GetError() << endl;
         return;
     }
+ cout << "constructor called" << endl;
+}
 
+void TextRenderer::initializeFont(const string& path, int size) {
+   
     font = TTF_OpenFont(path.c_str(), size);
+  
+
     if (!font) {
         cerr << "Error loading font: " << TTF_GetError() << endl;
+        return;
     }
 }
 
@@ -29,6 +32,13 @@ void TextRenderer::drawText(const string& text, SDL_Color& color, int x, int y, 
     if (TTF_SizeText(font, text.c_str(), &textW, &textH) != 0) {
         cerr << "TTF_SizeText failed: " << TTF_GetError() << endl;
         return;
+    }
+  
+    const char* cText = text.c_str();
+
+    if(!cText || strlen(cText) == 0 ) {
+      cerr<<"Null or empty string passed to TTF_RenderText\n";
+      return;
     }
 
     // Step 2: Compute destination rect
@@ -64,9 +74,17 @@ void TextRenderer::drawText(const string& text, SDL_Color& color, int x, int y, 
     }
 
     // Step 4: Draw the button box for debug
+    bool debugMode = false;
+    if(debugMode) {
+
     SDL_RenderDrawRect(renderer, &box);
+    }
 
     // Step 5: Draw the text
     SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
     SDL_DestroyTexture(texture);
+}
+
+TextRenderer::~TextRenderer() {
+  if(font) TTF_CloseFont(font);
 }

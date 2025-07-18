@@ -35,11 +35,18 @@ TextRenderer text(renderer);
 
 
   SDL_Rect dummyBox = {xOffset, y, textW, textH};
+  if(item == "" || item == " ") {
+    cout<<"[FATAL] item is null"<<endl;
+    return;
+  } 
   text.drawText(item,TEXT_COLOR, xOffset, y, dummyBox, Alignment::Left);
   xOffset  += textW + OFFSET_THRASHOLD;
 
   }
-
+ if(WINDOW_NAME == "" || WINDOW_NAME == " ") {
+    cout<<"[FATAL] WINDOW_NAME item is null"<<endl;
+    return;
+  } 
   text.drawText(WINDOW_NAME, TEXT_COLOR,445 , y, BAR_RECT, Alignment::Center);
 }
 
