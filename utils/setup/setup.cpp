@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include "setup.h"
+#include "../../gui/components/topbar/topbar.h"
 using namespace std;
 
 
@@ -44,12 +45,20 @@ void Setup::cleanSDL() {
 
 void Setup::runEventLoop() {
   bool running = true;
+  int mouseX, mouseY;
   SDL_Event event;
 
+  Topbar* topBar = nullptr;
+  
   while(running) {
+    SDL_GetMouseState(&mouseX,&mouseY);
     while(SDL_PollEvent(&event)) {
       if(event.type == SDL_QUIT) {
         running = false;
+      }
+      if(topBar->isCrossedClicked(event, mouseX, mouseY)) {
+        cleanSDL();
+        return;
       }
       gui->handle(event);
     }

@@ -23,4 +23,5 @@ class TextRenderer {
     ~TextRenderer();
     void initializeFont(const string& path, int size);
     void drawText(const string& text, SDL_Color& color, int x, int y, SDL_Rect box, Alignment align = Alignment::Center);
+    TTF_Font* getFont() const {return font;}
 };

@@ -12,6 +12,7 @@ class Topbar : public Component {
   public:
     std::vector<std::string> items;
     SDL_Rect BAR_RECT;
+    SDL_Rect crossBtn;
     bool isHovered = false;
     SDL_Color BG_COLOR;
     string font = "assets/Roboto-Regular.ttf"; 
@@ -20,10 +21,15 @@ class Topbar : public Component {
     int OFFSET_THRASHOLD;
     std::string WINDOW_NAME = "ARGUI V1.0";
     bool overlap = true;
+    bool isHoveringOnCrossBtn = false;
+    // storesthe current color
+    SDL_Color currentCrossColor; 
+    // speed for lerp (linear interpolation)
+    float HOVER_TRANSITION_SPEED = 0.1f;
     
     Topbar (std::vector<std::string> myItems,string windowName, SDL_Color bgColor, SDL_Color textColor, string myFont = "assets/Roboto-Regular.ttf", int  myOffsetThrashold= 75 );
 
     void draw(SDL_Renderer* renderer) override;
     void handle(SDL_Event& e) override;
-
+    bool isCrossedClicked(SDL_Event& event, int mouseX, int mouseY);
 };
