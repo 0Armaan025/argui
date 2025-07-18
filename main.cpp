@@ -43,11 +43,11 @@ int main() {
   /* gui.drawButton(); */
 
   Alignment textAlign = Alignment::Center;
-  Button* btn = new Button(100,100,200,50, "Click me!", textAlign);
+  Button* btn = new Button(100,100,200,50, "Click me!", textAlign, "assets/JetBrainsMono-Regular.ttf");
   std::vector<std::string> items = {"File", "Edit", "Help"};
   SDL_Color TOPBAR_BG_COLOR = {59,0,16,255};
   SDL_Color TOPBAR_TEXT_COLOR = {255,255,255,255};
-  Topbar* topBar = new Topbar(items, "ARGUI V1.0",TOPBAR_BG_COLOR,TOPBAR_TEXT_COLOR  );
+  Topbar* topBar = new Topbar(items, "ARGUI V1.0",TOPBAR_BG_COLOR,TOPBAR_TEXT_COLOR , "assets/JetBrainsMono-Regular.ttf" ,75);
   int r = 0, g = 0, b = 0;
     
   setup.gui->addComponent(btn);

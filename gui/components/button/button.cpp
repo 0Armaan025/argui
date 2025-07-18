@@ -28,7 +28,7 @@ void Button::draw(SDL_Renderer* renderer) {
   SDL_RenderFillRect(renderer, &rect);
  TextRenderer text(renderer);
   /* text.initializeFont(font.c_str(), 32); */
- text.initializeFont("assets/Roboto-Regular.ttf", 24);
+ text.initializeFont(font.c_str(), 24);
   SDL_Color textColor = {255,255,255,255};
   
   text.drawText("Hi, im good",textColor, xPos, yPos, rect, textAlign);

@@ -7,9 +7,10 @@
 #include <string>
 using namespace std;
 
-Topbar::Topbar (std::vector<std::string> myItems, string windowName, SDL_Color bgColor, SDL_Color textColor): items(myItems), WINDOW_NAME(windowName), BG_COLOR (bgColor), TEXT_COLOR(textColor){
+Topbar::Topbar (std::vector<std::string> myItems,string windowName, SDL_Color bgColor, SDL_Color textColor, string myFont, int myOffsetThrashold ): items(myItems), WINDOW_NAME(windowName), BG_COLOR (bgColor), TEXT_COLOR(textColor),font(myFont) , OFFSET_THRASHOLD(myOffsetThrashold){
   cout<<"topbar constructor called"<<endl;
   
+  OFFSET_THRASHOLD = myOffsetThrashold;
   BAR_RECT = {0,0,890,40};
 }
 
@@ -21,10 +22,13 @@ void Topbar::draw(SDL_Renderer* renderer) {
   SDL_RenderFillRect(renderer, &BAR_RECT);
   
   int xOffset = 10;
-  int OFFSET_THRASHOLD = 70;
   int yCenter = BAR_RECT.y + (BAR_RECT.h/2);
 TextRenderer text(renderer);
-  text.initializeFont("assets/Roboto-Regular.ttf", 24);
+if(font.c_str() == "" || font.c_str() == " ") {
+  cerr<<"font is not defined, [FATAL]"<<endl;
+  return;
+}
+  text.initializeFont(font.c_str(), 24);
 
 
     int textH = 0;
