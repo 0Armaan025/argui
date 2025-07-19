@@ -145,9 +145,11 @@ int mouseX = event.button.x;
             mouseY >= crossBtn.y && mouseY <= crossBtn.y + crossBtn.h) {
             cout << "[Cross Clicked]" << endl;
             /* return true; */
-            Setup setup;
-          setup.shouldQuit = true;
+        
+            SDL_Event quitEvent;
 
+            quitEvent.type = SDL_QUIT;
+            SDL_PushEvent(&quitEvent);
         }
   }
 
