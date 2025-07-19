@@ -19,7 +19,7 @@ class Button: public Component {
     string font = "assets/Roboto-Regular.ttf";
     Alignment textAlign = Alignment::Center;
     SDL_Color bgColor;
-
+    // some random comment to show im kinda tired or something - well, it's not that im tired i HAVE TO GO AND __ STUDY 
     Button(int x, int y, int w, int h, const std::string& text, Alignment align = Alignment::Center, string myFont = "assets/Roboto-Regular.ttf");
 
     SDL_Renderer* getRenderer() {

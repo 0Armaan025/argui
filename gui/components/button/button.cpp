@@ -20,10 +20,15 @@ void Button::handle(SDL_Event& event, SDL_Renderer* renderer, SDL_Window* window
 
     isHovered = (mx >= xPos && mx <= xPos - width && my >= yPos && my<=yPos + height); // basically checking if xPos is greater or equal to xPos of button, and it is not at start too, same for vertical thing :D
   }
+
+  
 }
 
 void Button::draw(SDL_Renderer* renderer) {
   cout<<"button has been drawn :)"<<endl;
+
+  
+
   SDL_SetRenderDrawColor(renderer, bgColor.r,bgColor.g, bgColor.b, bgColor.a);
   SDL_RenderFillRect(renderer, &rect);
  TextRenderer text(renderer);
