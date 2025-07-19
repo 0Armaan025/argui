@@ -36,6 +36,10 @@ Setup::Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH, SDL_Color color) :w(WINDOW_WI
   gui = new ARGui(renderer, window);
 }
 
+Setup::Setup() {
+
+}
+
 void Setup::cleanSDL() {
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
@@ -44,31 +48,28 @@ void Setup::cleanSDL() {
 }
 
 void Setup::runEventLoop() {
-  bool running = true;
   int mouseX, mouseY;
   SDL_Event event;
 
-  Topbar* topBar = nullptr;
   
-  while(running) {
-    SDL_GetMouseState(&mouseX,&mouseY);
+  while(!shouldQuit) {
+    SDL_GetMouseState(&mouseX, &mouseY);
     while(SDL_PollEvent(&event)) {
       if(event.type == SDL_QUIT) {
-        running = false;
+        shouldQuit = true;
       }
-      if(topBar->isCrossedClicked(event, mouseX, mouseY)) {
-        cleanSDL();
-        return;
-      }
-      gui->handle(event);
-    }
+      
+      gui->handle(event,renderer, window );
+     }
 
     SDL_SetRenderDrawColor(renderer, WINDOW_COLOR.r, WINDOW_COLOR.g, WINDOW_COLOR.b, WINDOW_COLOR.a);
     SDL_RenderClear(renderer);
 
-    gui->draw(renderer);
 
+    gui->draw(renderer);
     SDL_RenderPresent(renderer);
     SDL_Delay(16);
   }
+
+  cleanSDL();
 }

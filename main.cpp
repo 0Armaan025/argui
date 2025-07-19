@@ -20,7 +20,6 @@ using namespace std;
 /* }; */
 
 
-
 int main() {
 
   constexpr int WINDOW_WIDTH=890, WINDOW_HEIGHT=520;

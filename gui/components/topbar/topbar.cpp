@@ -1,4 +1,5 @@
 #include "../../utils/text/textRenderer.h"
+#include "../../../utils/setup/setup.h";
 #include "topbar.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -16,10 +17,16 @@ Topbar::Topbar(std::vector<std::string> myItems, string windowName,
 
   OFFSET_THRASHOLD = myOffsetThrashold;
   BAR_RECT = {0, 0, 890, 40};
-  crossBtn = {0, 0, 0, 0};
+  crossBtn = {0,0,0,0};
   currentCrossColor = {0,0,0,255};
 
+  handCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
+  arrowCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
   
+}
+
+Topbar::Topbar() {
+  cout<<"hm testing const iniitalied"<<endl;
 }
 
 // lerpColor helper function
@@ -74,8 +81,8 @@ void Topbar::draw(SDL_Renderer *renderer) {
   SDL_Color targetColor = isHoveringOnCrossBtn ? SDL_Color{41,41,41,255} : SDL_Color{0,0,0,255};
 
   SDL_Rect crossBox = {860, yCenter - xTextH / 2, xTextW + 8, xTextH + 2};
-  crossBtn = {860, yCenter - xTextH / 2, xTextW + 8, xTextH + 2};
-  /* SDL_RenderDrawRect(renderer, &crossBox); */
+
+crossBtn = {860, yCenter - xTextH / 2, xTextW + 8, xTextH + 2};
   /* if (isHoveringOnCrossBtn) { */
   /**/
   /*   SDL_SetRenderDrawColor(renderer, CROSS_HOVER_BG_COLOR.r, */
@@ -101,12 +108,12 @@ void Topbar::draw(SDL_Renderer *renderer) {
   text.drawText(WINDOW_NAME, TEXT_COLOR, 445, y, BAR_RECT, Alignment::Center);
 }
 
-void Topbar::handle(SDL_Event &event) {
-  SDL_Cursor* handCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
-  // this is a flag, we will create a new file for cursors management later :)
-
-  SDL_Cursor* arrowCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
-
+void Topbar::handle(SDL_Event &event, SDL_Renderer* renderer, SDL_Window* window) {
+  /* SDL_Cursor* handCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND); */
+  /* // this is a flag, we will create a new file for cursors management later :) */
+  /**/
+  /* SDL_Cursor* arrowCursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW); */
+  /**/
   if (event.type == SDL_MOUSEMOTION) {
 
     int mx = event.motion.x; // returns x;
@@ -127,14 +134,25 @@ void Topbar::handle(SDL_Event &event) {
   }
 
 
-}
+  if(event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+int mouseX = event.button.x;
+        int mouseY = event.button.y;
 
-bool Topbar::isCrossedClicked(SDL_Event& e, int mouseX, int mouseY) {
-    if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
+        cout << "[Click Detected] MouseX: " << mouseX << ", MouseY: " << mouseY << endl;
+        cout << "[CrossBtn Info] X: " << crossBtn.x << ", Y: " << crossBtn.y << ", W: " << crossBtn.w << ", H: " << crossBtn.h << endl;
+
         if (mouseX >= crossBtn.x && mouseX <= crossBtn.x + crossBtn.w &&
             mouseY >= crossBtn.y && mouseY <= crossBtn.y + crossBtn.h) {
-            return true;
+            cout << "[Cross Clicked]" << endl;
+            /* return true; */
+            Setup setup;
+          setup.shouldQuit = true;
+
         }
-    }
-    return false;
+  }
+
+
 }
+
+
+

@@ -27,5 +27,5 @@ class Button: public Component {
     }
 
     void draw(SDL_Renderer* renderer) override;
-    void handle(SDL_Event& e) override;
+    void handle(SDL_Event& e, SDL_Renderer* renderer, SDL_Window* window) override;
 };

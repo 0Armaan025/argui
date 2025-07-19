@@ -23,11 +23,13 @@ class ARGui {
       }
     }
 
-    void handle(SDL_Event& e) {
+    void handle(SDL_Event& e, SDL_Renderer* renderer, SDL_Window* window) {
       for(auto* c: components) {
-        c->handle(e);
+        c->handle(e, renderer, window);
       }
     }
+
+  
 
     ARGui(SDL_Renderer* ren, SDL_Window* win);
 

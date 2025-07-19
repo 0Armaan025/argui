@@ -15,9 +15,11 @@ class Setup {
     ARGui* gui = nullptr;
     SDL_Color WINDOW_COLOR;
     int w,h ;
-
+    bool shouldQuit = false;
+      
     Setup( int WINDOW_HEIGHT, int WINDOW_WIDTH, SDL_Color color = DEFAULT_COLOR);
 
+    Setup();
     void cleanSDL();
 
     void runEventLoop();

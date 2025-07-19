@@ -13,7 +13,7 @@ Button::Button(int x, int y, int w, int h, const std::string& text, Alignment al
 
        } 
 
-void Button::handle(SDL_Event& event) {
+void Button::handle(SDL_Event& event, SDL_Renderer* renderer, SDL_Window* window) {
   if(event.type == SDL_MOUSEMOTION) {
     int mx = event.motion.x; // returns x;
     int my = event.motion.y; // and ofc this will return the y pos of the cursor;
