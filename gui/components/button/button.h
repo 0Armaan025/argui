@@ -12,6 +12,8 @@ class Button: public Component {
   private:
     SDL_Renderer* renderer;
   public:
+    SDL_Cursor* handCursor = nullptr;
+    SDL_Cursor* normalCursor = nullptr;
     int xPos, yPos, width, height;
     SDL_Rect rect;
     std::string label;
