@@ -16,6 +16,8 @@ class Button: public Component {
     SDL_Cursor* normalCursor = nullptr;
     int xPos, yPos, width, height;
     SDL_Rect rect;
+float hoverProgress = 0.0f;  // Between 0.0 and 1.0
+float hoverSpeed = 0.05f;     // Adjust this for faster/slower fade
     std::string label;
     bool isHovered = false;
     string font = "assets/Roboto-Regular.ttf";
