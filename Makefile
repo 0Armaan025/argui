@@ -7,6 +7,7 @@ SRC = main.cpp \
       gui/utils/gui/gui.cpp \
       gui/components/button/button.cpp \
       gui/components/topbar/topbar.cpp \
+      gui/components/slider/slider.cpp \
       gui/utils/text/textRenderer.cpp
 
 HDR = gui/utils/gui/gui.h \
@@ -14,6 +15,7 @@ HDR = gui/utils/gui/gui.h \
       gui/utils/Component.h \
       gui/components/button/button.h \
       gui/components/topbar/topbar.h \
+      gui/components/slider/slider.h \
       gui/utils/text/textRenderer.h
 
 OBJ = $(SRC:.cpp=.o)

@@ -10,6 +10,7 @@
 #include "./gui/utils/component/Component.h"
 #include "./utils/setup/setup.h"
 #include "./gui/components/button/button.h"
+#include "./gui/components/slider/slider.h"
 using namespace std;
 
 /* struct Slider { */
@@ -47,10 +48,12 @@ int main() {
   SDL_Color TOPBAR_BG_COLOR = {59,0,16,255};
   SDL_Color TOPBAR_TEXT_COLOR = {255,255,255,255};
   Topbar* topBar = new Topbar(items, "ARGUI V1.0",TOPBAR_BG_COLOR,TOPBAR_TEXT_COLOR , "assets/JetBrainsMono-Regular.ttf" ,75);
+  Slider* mySlider = new Slider(100,200,200,0,100,50);
   int r = 0, g = 0, b = 0;
     
   setup.gui->addComponent(btn);
   setup.gui->addComponent(topBar);
+  setup.gui->addComponent(mySlider);
   setup.runEventLoop();
   setup.cleanSDL();
 
