@@ -18,7 +18,7 @@ void Slider::draw(SDL_Renderer* renderer) {
   // renderer, x1, y1, x2, y2
 
   int handleX = x + ((value - min) * width) / (max-min);
-  SDL_SetRenderDrawColor(renderer, 60,60,255,255);
+  SDL_SetRenderDrawColor(renderer, 255,255,255,255);
   SDL_Rect handle = {handleX - handleRadius, y  - handleRadius, handleRadius *2, handleRadius *2};
   SDL_RenderFillRect(renderer, &handle);
   
